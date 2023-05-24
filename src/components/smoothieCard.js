@@ -63,7 +63,7 @@ const SmoothieCard = ({ smoothie, onDelete, onLike })=>{
                 <i onClick={handleDelete} className="material-icons">delete</i>
                 <i
                     onClick={handleLike}
-                    className={`material-icons ${isLiked ? "special" : ""}`}
+                    className={`material-icons ${isLiked ? "special" : "normal"}`}
                 >
                 thumb_up
                 </i>

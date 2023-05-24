@@ -127,16 +127,15 @@ form button{
   cursor: pointer;
 }
 
-.smoothie-card .liked{
-  color: white;
-  background: var(--primary);
-}
+/* .smoothie-card .normal:hover{
+  transform: scale(1.1);
+} */
 
-.smoothie-card .special:hover{
+.smoothie-card .normal:hover{
   transform: scale(1.1);
 }
 
-.smoothie-card .special:active{
+.smoothie-card .normal:active{
   transform: scale(0.9);
 }
 
