@@ -49,7 +49,7 @@ const Home = () => {
             <p>Order By:</p>
 
             <button 
-              className={orderBy == "created_at" ? "active" :""} 
+              className={orderBy === "created_at" ? "active" :""} 
               onClick={()=> {
                 setOrderBy('created_at'); 
                 setAscend(false)
@@ -58,7 +58,7 @@ const Home = () => {
             </button>
             
             <button 
-              className={orderBy == "title" ? "active" :""} 
+              className={orderBy === "title" ? "active" :""} 
               onClick={()=> {
                 setOrderBy('title'); 
                 setAscend(true)
@@ -67,7 +67,7 @@ const Home = () => {
             </button>
             
             <button 
-              className={orderBy == "rating" ? "active" :""} 
+              className={orderBy === "rating" ? "active" :""} 
               onClick={()=> {
                 setOrderBy('rating'); 
                 setAscend(false)
