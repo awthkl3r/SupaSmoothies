@@ -14,7 +14,7 @@ const Home = () => {
 
   const handleDelete = (id) =>{
     setSmoothies(prevSmoothies =>{
-      return prevSmoothies.filter(sm => sm.id != id)
+      return prevSmoothies.filter(sm => sm.id !== id)
     })
   }
 
