@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import supabase from "../Config/supabaseClient"
 
-const SmoothieCard = ({ smoothie, onDelete })=>{
+const SmoothieCard = ({ smoothie, onDelete, onLike })=>{
+
 
     const handleDelete = async () =>{
         const { data, error } = await supabase
@@ -14,9 +15,26 @@ const SmoothieCard = ({ smoothie, onDelete })=>{
             console.log(error)
         }
         if(data){
+            // console.log(data)
             onDelete(smoothie.id)
         }
     } 
+
+    const handleLike = async () => {
+        const { data, error } = await supabase
+            .from("smoothies")
+            .update({ rating: smoothie.rating + 1 })
+            .eq("id", smoothie.id)
+            .select();
+
+        if (error) {
+        console.log(error);
+        }
+        if (data) {
+        const updatedSmoothie = data[0]; // Retrieve the updated smoothie data
+        onLike(updatedSmoothie); // Pass the updated smoothie object
+        }
+  };
 
     return (
         <div className="smoothie-card">
@@ -28,6 +46,7 @@ const SmoothieCard = ({ smoothie, onDelete })=>{
                     <i className="material-icons">edit</i>
                 </Link>
                 <i onClick={handleDelete} className="material-icons">delete</i>
+                <i onClick={handleLike} className="material-icons special">thumb_up</i>
             </div>
         </div>
     )

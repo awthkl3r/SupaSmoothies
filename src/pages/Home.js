@@ -18,6 +18,17 @@ const Home = () => {
     })
   }
 
+  const handleLike = (updatedSmoothie) => {
+    setSmoothies((prevSmoothies) => {
+      return prevSmoothies.map((sm) => {
+        if (sm.id === updatedSmoothie.id) {
+          return updatedSmoothie; // Update the smoothie with the updated data
+        }
+        return sm;
+      });
+    });
+  };
+
   useEffect(()=>{
     const fetchSmoothies = async ()=>{
       const { data, error } = await supabase
@@ -82,6 +93,7 @@ const Home = () => {
                 key={smoothie.id} 
                 smoothie={smoothie} 
                 onDelete = {handleDelete}  
+                onLike = {handleLike}  
               />
             ))}
           </div>
