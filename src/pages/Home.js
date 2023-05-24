@@ -54,7 +54,8 @@ const Home = () => {
   return (
     <div className="page home">
       {fetchError && (<p>{fetchError}</p>)}
-      {smoothies && (
+      {smoothies && smoothies.length > 0 ? (
+        
         <div className="smoothies">
           <div className="order-by">
             <p>Order By:</p>
@@ -97,7 +98,10 @@ const Home = () => {
               />
             ))}
           </div>
-        </div>
+        </div>) : (
+
+          <p className="none-message">No Cards... Create New Cards In The Create Tab</p>
+      
       )}
     </div>
   )

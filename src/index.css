@@ -172,3 +172,11 @@ form button{
 .activeLink{
   background: var(--secondary);
 }
+
+.none-message{
+  /* display: flex; */
+  width: 400px;
+  text-align: center;
+  background-color: var(--secondary);
+  border-radius: 6px;
+}

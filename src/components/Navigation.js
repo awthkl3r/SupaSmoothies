@@ -8,7 +8,7 @@ function Navigation() {
     <nav>
       <h1>Notes</h1>
       <Link className={currentPath === '/' ? 'activeLink' : 'Link'} to="/">Home</Link>
-      <Link className={currentPath === '/create' ? 'activeLink' : 'Link'} to="/create">Create New</Link>
+      <Link className={currentPath === '/create' ? 'activeLink' : 'Link'} to="/create">Create</Link>
     </nav>
   );
 }
