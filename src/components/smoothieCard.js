@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 import supabase from "../Config/supabaseClient"
 
 const SmoothieCard = ({ smoothie, onDelete, onLike })=>{
 
+    const [isLiked, setIsLiked] = useState(false)
+
+    useEffect(() => {
+        const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
+        setIsLiked(likedSmoothies.includes(smoothie.id));
+    }, [smoothie.id]);
 
     const handleDelete = async () =>{
         const { data, error } = await supabase
@@ -20,31 +27,29 @@ const SmoothieCard = ({ smoothie, onDelete, onLike })=>{
         }
     } 
 
-
-    
-
-
     const handleLike = async () => {
-        const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
+        // const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || []
         
-        if (!likedSmoothies.includes(smoothie.id)) {
+        if (!isLiked) {
             const { data, error } = await supabase
                 .from("smoothies")
                 .update({ rating: smoothie.rating + 1 })
                 .eq("id", smoothie.id)
-                .select();
+                .select()
 
             if (error) {
-                console.log(error);
+                console.log(error)
             }
             if (data) {
-                const updatedSmoothie = data[0]; // Retrieve the updated smoothie data
-                onLike(updatedSmoothie); // Pass the updated smoothie object
+                const updatedSmoothie = data[0];
+                onLike(updatedSmoothie);
+                setIsLiked(true);
+                const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
                 likedSmoothies.push(smoothie.id);
                 localStorage.setItem("likedSmoothies", JSON.stringify(likedSmoothies));
             }
         }
-    };
+    }
 
     return (
         <div className="smoothie-card">
@@ -56,7 +61,12 @@ const SmoothieCard = ({ smoothie, onDelete, onLike })=>{
                     <i className="material-icons">edit</i>
                 </Link>
                 <i onClick={handleDelete} className="material-icons">delete</i>
-                <i onClick={handleLike} className="material-icons special">thumb_up</i>
+                <i
+                    onClick={handleLike}
+                    className={`material-icons ${isLiked ? "special" : ""}`}
+                >
+                thumb_up
+                </i>
             </div>
         </div>
     )

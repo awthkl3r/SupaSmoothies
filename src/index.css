@@ -127,6 +127,11 @@ form button{
   cursor: pointer;
 }
 
+.smoothie-card .liked{
+  color: white;
+  background: var(--primary);
+}
+
 .smoothie-card .special:hover{
   transform: scale(1.1);
 }

@@ -8,11 +8,9 @@ const Create = () => {
 
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
-  // const [rating, setRating] = useState('')
-  const rating = 0
   const [formError, setFormError] = useState(null)
 
-  
+  const rating = 0
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
