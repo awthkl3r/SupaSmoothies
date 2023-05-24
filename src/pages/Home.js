@@ -38,7 +38,7 @@ const Home = () => {
     }
 
     fetchSmoothies()
-  }, [orderBy])
+  }, [orderBy, ascend])
 
   return (
     <div className="page home">
