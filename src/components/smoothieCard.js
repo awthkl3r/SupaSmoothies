@@ -20,21 +20,31 @@ const SmoothieCard = ({ smoothie, onDelete, onLike })=>{
         }
     } 
 
-    const handleLike = async () => {
-        const { data, error } = await supabase
-            .from("smoothies")
-            .update({ rating: smoothie.rating + 1 })
-            .eq("id", smoothie.id)
-            .select();
 
-        if (error) {
-        console.log(error);
+    
+
+
+    const handleLike = async () => {
+        const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
+        
+        if (!likedSmoothies.includes(smoothie.id)) {
+            const { data, error } = await supabase
+                .from("smoothies")
+                .update({ rating: smoothie.rating + 1 })
+                .eq("id", smoothie.id)
+                .select();
+
+            if (error) {
+                console.log(error);
+            }
+            if (data) {
+                const updatedSmoothie = data[0]; // Retrieve the updated smoothie data
+                onLike(updatedSmoothie); // Pass the updated smoothie object
+                likedSmoothies.push(smoothie.id);
+                localStorage.setItem("likedSmoothies", JSON.stringify(likedSmoothies));
+            }
         }
-        if (data) {
-        const updatedSmoothie = data[0]; // Retrieve the updated smoothie data
-        onLike(updatedSmoothie); // Pass the updated smoothie object
-        }
-  };
+    };
 
     return (
         <div className="smoothie-card">

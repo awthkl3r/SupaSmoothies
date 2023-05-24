@@ -18,6 +18,7 @@ const Update = () => {
 
     if(!title || !method || !rating){
       setFormError('Please Fill In The Fields')
+      console.log('error')
       return
     }
 
@@ -34,7 +35,7 @@ const Update = () => {
 
     if(data){
       setFormError(null)
-
+      console.log('error')
       navigate('/')
     }
   }
