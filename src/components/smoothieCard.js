@@ -104,6 +104,7 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
         {/* eslint-disable-next-line eqeqeq */}
         <i
           onClick={handleLike}
+          /* eslint-disable-next-line eqeqeq */
           className={String(extractedPart) != String(username) ? `material-icons ${isLiked ? "special" : "normal"}` : "hidden"}
         >
           thumb_up
