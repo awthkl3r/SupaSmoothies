@@ -52,10 +52,10 @@ const Home = () => {
 
     const getSessionData = async () => {
       const session = await supabase.auth.getSession();
-      if (session && session.data.session.user) {
+      if (session && session.data.session && session.data.session.user) {
         const username_extracted = session.data.session.user.email.split('@')[0];
         setUsername(username_extracted);
-        setUsername(username_extracted);
+        // setUsername(username_extracted);
       }
     };
     getSessionData();
