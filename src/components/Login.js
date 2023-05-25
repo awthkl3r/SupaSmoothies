@@ -36,7 +36,7 @@ const Login = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <button onClick={handleLogin} disabled={loading}>
-      {loading ? "Logging in..." : "Login with OTP"}
+      {loading ? "Logging in..." : "Log in"}
       </button>
     </div>
   );

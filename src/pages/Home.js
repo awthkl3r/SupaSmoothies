@@ -1,5 +1,6 @@
 import { supabase } from "../Config/supabaseClient";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //components
 import SmoothieCard from "../components/smoothieCard";

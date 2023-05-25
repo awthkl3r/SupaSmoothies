@@ -94,14 +94,14 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
       <div className="rating">{smoothie.rating}</div>
       <div className="button">
         <Link to={"/" + smoothie.id}>
-          <i className={extractedPart === username ? "material-icons" : "hidden"}>edit</i>
+          <i className={extractedPart == username ? "material-icons" : "hidden"}>edit</i>
         </Link>
-        <i onClick={handleDelete} className={extractedPart === username ? "material-icons" : "hidden"}>
+        <i onClick={handleDelete} className={extractedPart == username ? "material-icons" : "hidden"}>
           delete
         </i>
         <i
           onClick={handleLike}
-          className={extractedPart !== username ? `material-icons ${isLiked ? "special" : "normal"}` : "hidden"}
+          className={extractedPart != username ? `material-icons ${isLiked ? "special" : "normal"}` : "hidden"}
         >
           thumb_up
         </i>

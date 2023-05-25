@@ -55,8 +55,6 @@ const Create = () => {
     
   }
 
-  
-
   return (
     <div className="page create">
 
@@ -75,21 +73,21 @@ const Create = () => {
             var extractedPart = string.split(pattern)[0]
 
             switch (true) {
-              case (e.target.value !== "" && e.target.value !== `${e.target.value} by ${username}` && e.target.value === `${extractedPart} by ${username}`):
-                setTitle(`${e.target.value} by ${username}`);
-                break;
-              case (e.target.value !== "" && e.target.value !== `${extractedPart} by ${username}`):
-                if (`${extractedPart}${username}` !== string.split(`${extractedPart} ${username}`)[0]) {
-                  setTitle(`${extractedPart} by ${username}`);
-                }
-                break;
-              default:
-                // Handle any other cases if needed
-                break;
+                case (e.target.value !== "" && e.target.value !== `${e.target.value} by ${username}` && e.target.value === `${extractedPart} by ${username}`):
+                  setTitle(`${e.target.value} by ${username}`);
+                  break;
+                case (e.target.value !== "" && e.target.value !== `${extractedPart} by ${username}`):
+                  if (`${extractedPart}${username}` !== string.split(`${extractedPart} ${username}`)[0]) {
+                    setTitle(`${extractedPart} by ${username}`);
+                  }
+                  break;
+                default:
+                  // Handle any other cases if needed
+                  break;
+              }
             }
             
-            
-          }}
+          }
           
         />
 
