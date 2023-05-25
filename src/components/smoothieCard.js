@@ -94,11 +94,14 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
       <div className="rating">{smoothie.rating}</div>
       <div className="button">
         <Link to={"/" + smoothie.id}>
+          {/* eslint-disable-next-line eqeqeq */}
           <i className={String(extractedPart) == String(username) ? "material-icons" : "hidden"}>edit</i>
         </Link>
+        {/* eslint-disable-next-line eqeqeq */}
         <i onClick={handleDelete} className={String(extractedPart) == String(username) ? "material-icons" : "hidden"}>
           delete
         </i>
+        {/* eslint-disable-next-line eqeqeq */}
         <i
           onClick={handleLike}
           className={String(extractedPart) != String(username) ? `material-icons ${isLiked ? "special" : "normal"}` : "hidden"}
