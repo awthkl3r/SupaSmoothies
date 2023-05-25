@@ -13,8 +13,6 @@ const Home = () => {
   const [orderBy, setOrderBy] = useState("created_at");
   const [ascend, setAscend] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleDelete = (id) => {
     setSmoothies((prevSmoothies) => {
       return prevSmoothies.filter((sm) => sm.id !== id);
