@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import supabase from '../Config/supabaseClient'
+import { useEffect, useState } from 'react'
+import { supabase } from '../Config/supabaseClient'
 import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
@@ -10,7 +10,25 @@ const Create = () => {
   const [method, setMethod] = useState('')
   const [formError, setFormError] = useState(null)
 
+  const [username, setUsername] = useState("")
+
   const rating = 0
+
+  useEffect(()=>{
+
+    const getSessionData = async () => {
+      const session = await supabase.auth.getSession();
+      if (session && session.data.session.user) {
+        const username_extracted = session.data.session.user.email.split('@')[0];
+        setUsername(username_extracted);
+        
+      }
+    };
+
+    getSessionData();
+  }, [])
+
+  
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -37,6 +55,8 @@ const Create = () => {
     
   }
 
+  
+
   return (
     <div className="page create">
 
@@ -48,6 +68,25 @@ const Create = () => {
           id = "title" 
           value = {title}
           onChange={(e)=>setTitle(e.target.value)}
+          onBlur={(e)=>{
+
+            var pattern = username
+            var string = e.target.value
+            var extractedPart = string.split(pattern)[0]
+
+            switch (true){
+              case e.target.value != "" && e.target.value != e.target.value + ` by ${username}` && e.target.value == extractedPart + ` by ${username}`:
+                setTitle(e.target.value + ` by ${username}`)
+                break
+              case e.target.value != "" && e.target.value != extractedPart + ` by ${username}`:
+                if(extractedPart + `${username}` != string.split(extractedPart + " " + `${username}`)[0]){
+                  setTitle(extractedPart + " by " + `${username}`)
+                }
+                break
+            }
+            
+          }}
+          
         />
 
         <label htmlFor="method">Desciption:</label>
@@ -58,15 +97,7 @@ const Create = () => {
           onChange={(e)=>setMethod(e.target.value)}
         />
 
-        {/* <label htmlFor="rating">Rating:</label>
-        <input 
-          type = "number" 
-          id = "rating" 
-          value = {rating}
-          onChange={(e)=>setRating(e.target.value)}
-        /> */}
-
-        <button>Create Recipe</button>
+        <button>Create</button>
 
         {formError && <p className="error">{formError}</p>}
       </form>

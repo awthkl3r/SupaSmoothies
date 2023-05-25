@@ -1,22 +1,22 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react'
-import supabase from "../Config/supabaseClient"
+import { supabase } from "../Config/supabaseClient"
 
 const Update = () => {
-
   const { id } = useParams()
+
   const navigate = useNavigate()
 
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
-  const [rating, setRating] = useState('')
+  const [rating, setRating] = useState(0)
 
   const [formError, setFormError] = useState(null)
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
 
-    if(!title || !method || !rating){
+    if(!title || !method){
       setFormError('Please Fill In The Fields')
       console.log('error')
       return
@@ -55,7 +55,6 @@ const Update = () => {
         setTitle(data.title)
         setMethod(data.method)
         setRating(data.rating)
-        // console.log(data)
       }
     }
 
@@ -80,14 +79,6 @@ const Update = () => {
           id = "method" 
           value = {method}
           onChange={(e)=>setMethod(e.target.value)}
-        />
-
-        <label htmlFor="rating">Rating:</label>
-        <input 
-          type = "number" 
-          id = "rating" 
-          value = {rating}
-          onChange={(e)=>setRating(e.target.value)}
         />
 
         <button>Update Recipe</button>

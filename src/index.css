@@ -41,6 +41,36 @@ nav h1 {
   padding: 20px;
 }
 
+.login {
+  max-width: 1200px;
+  min-height: 70dvh;
+  margin: 0px auto;
+  padding: 20px;
+  background: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login h1 {
+  margin-right: 40px;
+}
+
+.login button {
+  text-align: center;
+  background-color: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  height: 75px;
+  font-size: 16px;
+  width: 6dvw;
+  padding: 6px 8px;
+  font-family: "Poppins";
+  cursor: pointer;
+}
+
+
 .smoothie-grid{
   margin-top: 40;
   display: grid;
@@ -88,10 +118,29 @@ form input, form textarea{
   width: 100%;
   padding: 6px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 2px solid var(--primary);
   resize: vertical;
   margin: 10px 0 20px 0;
 }
+
+/* form input:focus, form textarea:active{
+  border: 2px solid var(--accent);
+} */
+
+input, textarea{
+  display: block;
+  width: 22dvw;
+  padding: 6px;
+  box-sizing: border-box;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  resize: vertical;
+  margin-right: 40px;
+}
+
+/* input:active, textarea:active{
+  border: 2px solid var(--secondary);
+} */
 
 form button{
   background-color: var(--primary);
@@ -183,4 +232,10 @@ form button{
   text-align: center;
   background-color: var(--secondary);
   border-radius: 6px;
+}
+
+.hidden{
+  display: none;
+  visibility: hidden;
+  opacity: 0; 
 }

@@ -9,6 +9,7 @@ function Navigation() {
       <h1>Notes</h1>
       <Link className={currentPath === '/' ? 'activeLink' : 'Link'} to="/">Home</Link>
       <Link className={currentPath === '/create' ? 'activeLink' : 'Link'} to="/create">Create</Link>
+      <Link className={currentPath === '/login' ? 'activeLink' : 'Link'} to="/login">Login</Link>
     </nav>
   );
 }
