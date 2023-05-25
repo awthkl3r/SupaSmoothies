@@ -6,12 +6,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const nothing = 0
-  if(error){
-    nothing = 1
-  }
-
   const handleLogin = async () => {
+    setError(error)
     try {
       setLoading(true);
       setError(null);
