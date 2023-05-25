@@ -32,11 +32,6 @@ const Home = () => {
     });
   };
 
-  const handleCreate = () => {
-    navigate("/create", { state: { username } }); // Pass username in the state
-  };
-
-
   useEffect(() => {
     const fetchSmoothies = async () => {
       const { data, error } = await supabase
