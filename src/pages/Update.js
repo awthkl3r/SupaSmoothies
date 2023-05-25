@@ -81,7 +81,7 @@ const Update = () => {
           onChange={(e)=>setMethod(e.target.value)}
         />
 
-        <button>Update Recipe</button>
+        <button>Update Card</button>
 
         {formError && <p className="error">{formError}</p>}
     </form>
