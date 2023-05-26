@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import Create from "./pages/Create"
 import Update from "./pages/Update"
 import Login from "./components/Login"
+import Logout from "./components/Logout"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setUsername={setUsernameC} />} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/logout" element={<Logout/>} />
         <Route path="/create" element={<Create username={username} />} />
         <Route path="/:id" element={<Update />} />
       </Routes>
