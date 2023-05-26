@@ -268,7 +268,7 @@ form button {
 
 .grayText{
   position: absolute;
-  color: gray;
+  color: var(--secondary);
   font-size: 12px;
   right: 20px;
   bottom: 20px;

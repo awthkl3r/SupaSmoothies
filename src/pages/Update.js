@@ -11,6 +11,8 @@ const Update = () => {
   const [method, setMethod] = useState('')
   const [rating, setRating] = useState(0)
 
+  const [username, setUsername] = useState('')
+
   const [formError, setFormError] = useState(null)
 
   const handleSubmit = async (e)=>{
@@ -60,6 +62,20 @@ const Update = () => {
 
     fetchSmoothie()
   }, [id, navigate])
+
+  useEffect(()=>{
+
+    const getSessionData = async () => {
+      const session = await supabase.auth.getSession();
+      if (session && session.data.session && session.data.session.user) {
+        const username_extracted = session.data.session.user.email.split('@')[0];
+        setUsername(username_extracted);
+        
+      }
+    };
+
+    getSessionData();
+  }, [])
   
   return (
     <div className="page update">
@@ -71,6 +87,27 @@ const Update = () => {
           id = "title" 
           value = {title}
           onChange={(e)=>setTitle(e.target.value)}
+          onBlur={(e)=>{
+
+            var pattern = username
+            var string = e.target.value
+            var extractedPart = string.split(pattern)[0]
+
+            switch (true) {
+                case (e.target.value !== "" && e.target.value !== `${e.target.value} by ${username}` && e.target.value === `${extractedPart} by ${username}`):
+                  setTitle(`${e.target.value} by ${username}`);
+                  break;
+                case (e.target.value !== "" && e.target.value !== `${extractedPart} by ${username}`):
+                  if (`${extractedPart}${username}` !== string.split(`${extractedPart} ${username}`)[0]) {
+                    setTitle(`${extractedPart} by ${username}`);
+                  }
+                  break;
+                default:
+                  // Handle any other cases if needed
+                  break;
+              }
+          }
+         }
         />
 
         <label htmlFor="method">Method:</label>
