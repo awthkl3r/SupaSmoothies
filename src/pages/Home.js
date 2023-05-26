@@ -109,6 +109,7 @@ const Home = () => {
                 onLike={handleLike}
                 user={username}
                 creator={smoothie.creator}
+                className="blackText"
               />
             ))}
           </div>

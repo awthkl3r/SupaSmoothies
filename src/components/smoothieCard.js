@@ -79,16 +79,34 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
     };
     getSessionData();
   }, [])
+
+  const extractUsername = () => {
+    const index = smoothie.title.indexOf("by");
+    if (index !== -1) {
+      const extractedPart = smoothie.title.slice(index + 3).trim();
+      return extractedPart;
+    }
+    return null;
+  };
   
   var pattern = username
   var regex = new RegExp(pattern, "g")
   var string = smoothie.title
   var extractedPart = string.match(regex);
 
+  const usernamePart = extractUsername();
+  const titlePart = usernamePart ? smoothie.title.replace(`by ${usernamePart}`, "") : smoothie.title;
   return (
     <div className="smoothie-card">
       <h3>
-      {smoothie.title}
+        {usernamePart ? (
+          <>
+            <span className="blackText">{titlePart}</span>
+            <span className="grayText">by {usernamePart}</span>
+          </>
+        ) : (
+          smoothie.title
+        )}
       </h3>
       <p>{smoothie.method}</p>
       <div className="rating">{smoothie.rating}</div>
