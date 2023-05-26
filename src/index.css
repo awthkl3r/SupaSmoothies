@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
-*{
+* {
   transition: 0.1s ease-out;
 }
 
 :root {
-  /* --primary: #12bca2;
-  --secondary: #6d15df; */
-
   --primary: #e65538;
   --secondary: #90264e;
   --accent: #c8213d;
 }
-h1,h2,h3 {
+
+h1, h2, h3 {
   margin: 0;
 }
 
@@ -22,19 +20,23 @@ body {
   font-family: 'Poppins';
   background: var(--accent);
 }
+
 nav {
   background: var(--primary);
   padding: 10px 20px;
   text-align: center;
 }
+
 nav a {
   color: #f2f2f2;
   margin: 10px;
   display: inline-block;
 }
+
 nav h1 {
   color: #fff;
 }
+
 .page {
   max-width: 1200px;
   margin: 20px auto;
@@ -43,17 +45,26 @@ nav h1 {
 
 .login {
   max-width: 1200px;
-  min-height: 70dvh;
-  margin: 0px auto;
+  min-height: 70vh;
+  margin: 0 auto;
   padding: 20px;
   background: var(--accent);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .login h1 {
-  margin-right: 40px;
+  margin-bottom: 20px;
+}
+
+.login input,
+.login button {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
 .login button {
@@ -64,21 +75,27 @@ nav h1 {
   border-radius: 6px;
   height: 75px;
   font-size: 16px;
-  width: 6dvw;
+  width: 15vw;
   padding: 6px 8px;
   font-family: "Poppins";
   cursor: pointer;
 }
 
+.login button {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+}
 
-.smoothie-grid{
-  margin-top: 40;
+.smoothie-grid {
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
 }
 
-.smoothie-card{
+.smoothie-card {
   width: 100%;
   padding: 10px;
   background: #fff;
@@ -90,10 +107,9 @@ nav h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* position: relative; */
 }
 
-.smoothie-card .rating{
+.smoothie-card .rating {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -107,9 +123,7 @@ nav h1 {
   text-align: center;
 }
 
-/* forms */
-
-form{
+form {
   background: #fff;
   padding: 20px;
   color: black;
@@ -118,7 +132,8 @@ form{
   border-radius: 6px;
 }
 
-form input, form textarea{
+form input,
+form textarea {
   display: block;
   width: 100%;
   padding: 6px;
@@ -128,42 +143,35 @@ form input, form textarea{
   margin: 10px 0 20px 0;
 }
 
-/* form input:focus, form textarea:active{
-  border: 2px solid var(--accent);
-} */
-
-input, textarea{
+input,
+textarea {
   display: block;
-  width: 22dvw;
+  width: 100%;
   padding: 6px;
   box-sizing: border-box;
   border: 2px solid var(--primary);
   border-radius: 6px;
   resize: vertical;
-  margin-right: 40px;
+  margin-bottom: 10px;
 }
 
-/* input:active, textarea:active{
-  border: 2px solid var(--secondary);
-} */
-
-form button{
+form button {
   background-color: var(--primary);
   color: #fff;
   border: 0;
   border-radius: 6px;
   padding: 6px 8px;
   font-family: "Poppins";
-  cursor: pointer;  
+  cursor: pointer;
 }
 
-.smoothie-card .buttons{
+.smoothie-card .buttons {
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
-.smoothie-card i{
+.smoothie-card i {
   position: relative;
   color: #bbb;
   margin-left: 10px;
@@ -175,7 +183,7 @@ form button{
   cursor: pointer;
 }
 
-.smoothie-card .special{
+.smoothie-card .special {
   color: #fff;
   margin-left: 10px;
   font-size: 1.2rem;
@@ -185,21 +193,7 @@ form button{
   cursor: pointer;
 }
 
-/* .smoothie-card .normal:hover{
-  transform: scale(1.1);
-} */
-
-.smoothie-card .normal:hover{
-  transform: scale(1.1);
-}
-
-.smoothie-card .normal:active{
-  transform: scale(0.9);
-}
-
-/* order by */
-
-.order-by button{
+.order-by button {
   margin-right: 10px;
   margin-bottom: 40px;
   background: var(--secondary);
@@ -211,11 +205,12 @@ form button{
   cursor: pointer;
 }
 
-.order-by .active{
+.order-by .active {
   background: var(--primary);
 }
 
-.Link, .activeLink{
+.Link,
+.activeLink {
   margin-right: 10px;
   margin-bottom: 40px;
   color: #fff;
@@ -227,24 +222,25 @@ form button{
   cursor: pointer;
 }
 
-.Link{
+.Link {
   background: var(--primary);
 }
 
-.activeLink{
+.activeLink {
   background: var(--secondary);
 }
 
-.none-message{
-  /* display: flex; */
+.none-message {
   width: 400px;
+  word-wrap: break-word;
   text-align: center;
   background-color: var(--secondary);
   border-radius: 6px;
 }
 
-.hidden{
+
+.hidden {
   display: none;
   visibility: hidden;
-  opacity: 0; 
+  opacity: 0;
 }
