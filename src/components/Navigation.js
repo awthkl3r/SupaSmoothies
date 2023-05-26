@@ -39,7 +39,12 @@ function Navigation() {
     <nav>
       <h1>Notes</h1>
       <Link className={currentPath === '/' ? 'activeLink' : 'Link'} to="/">Home</Link>
-      <Link className={currentPath === '/create' ? 'activeLink' : 'Link'} to="/create">Create</Link>
+      {loggedIn ? (
+        <Link className={currentPath === '/create' ? 'activeLink' : 'Link'} to="/create">Create</Link>
+      ) : (
+        <></>
+      )}
+      {/* <Link className={currentPath === '/create' ? 'activeLink' : 'Link'} to="/create">Create</Link> */}
       {loggedIn ? (
         <Link className={currentPath === '/logout' ? 'activeLink' : 'Link'} to="/logout">Logout</Link>
       ) : (
