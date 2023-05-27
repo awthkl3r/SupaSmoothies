@@ -63,7 +63,7 @@ const Home = () => {
 
   return (
     <div className="page home">
-      <p>Hello, {username}</p>
+      <p className="hello">{username === " " ? `Hello, ${username}` : "Hi!"}</p>
       {fetchError && <p>{fetchError}</p>}
       {smoothies && smoothies.length > 0 ? (
         <div className="smoothies">

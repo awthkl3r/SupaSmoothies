@@ -15,7 +15,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navigation />
+      <div className="navContainer">
+        <Navigation />
+      </div>
       <Routes>
         <Route path="/" element={<Home setUsername={setUsernameC} />} />
         <Route path="/login" element={<Login/>} />
