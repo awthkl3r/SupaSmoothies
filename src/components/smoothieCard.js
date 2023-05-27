@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "../Config/supabaseClient";
 
 const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
   const [isLiked, setIsLiked] = useState(false);
   const [username, setUsername] = useState("")
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
@@ -28,43 +30,61 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
 
   const handleLike = async () => {
     if (!isLiked) {
-      const { data, error } = await supabase
-        .from("smoothies")
-        .update({ rating: smoothie.rating + 1 })
-        .eq("id", smoothie.id)
-        .select();
+        if(username == ""){
+            navigate("/login")
+            alert("log in")
+        }
+        else{
 
-      if (error) {
-        console.log(error);
-      }
-      if (data) {
-        const updatedSmoothie = data[0];
-        onLike(updatedSmoothie);
-        setIsLiked(true);
-        const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
-        likedSmoothies.push(smoothie.id);
-        localStorage.setItem("likedSmoothies", JSON.stringify(likedSmoothies));
-      }
+            const { data, error } = await supabase
+                .from("smoothies")
+                .update({ rating: smoothie.rating + 1 })
+                .eq("id", smoothie.id)
+                .select();
+
+            if (error) {
+                console.log(error);
+            }
+            if (data) {
+                const updatedSmoothie = data[0];
+                onLike(updatedSmoothie);
+                setIsLiked(true);
+                const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
+                likedSmoothies.push(smoothie.id);
+                localStorage.setItem("likedSmoothies", JSON.stringify(likedSmoothies));
+            }
+
+        }
+      
     }
 
     if (isLiked && smoothie.rating) {
-      const { data, error } = await supabase
-        .from("smoothies")
-        .update({ rating: smoothie.rating - 1 })
-        .eq("id", smoothie.id)
-        .select();
+        if(username == ""){
+            navigate("/login")
+            alert("log in")
+        }
+        else{
 
-      if (error) {
-        console.log(error);
-      }
-      if (data) {
-        const updatedSmoothie = data[0];
-        onLike(updatedSmoothie);
-        setIsLiked(false);
-        const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
-        likedSmoothies.pop(smoothie.id);
-        localStorage.setItem("likedSmoothies", JSON.stringify(likedSmoothies));
-      }
+            const { data, error } = await supabase
+                .from("smoothies")
+                .update({ rating: smoothie.rating - 1 })
+                .eq("id", smoothie.id)
+                .select();
+
+            if (error) {
+                console.log(error);
+            }
+            if (data) {
+                const updatedSmoothie = data[0];
+                onLike(updatedSmoothie);
+                setIsLiked(false);
+                const likedSmoothies = JSON.parse(localStorage.getItem("likedSmoothies")) || [];
+                likedSmoothies.pop(smoothie.id);
+                localStorage.setItem("likedSmoothies", JSON.stringify(likedSmoothies));
+            }
+
+        }
+      
     }
   };
 

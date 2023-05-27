@@ -8,7 +8,6 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null);
   const [smoothies, setSmoothies] = useState(null);
   const [username, setUsername] = useState("");
-
   const [orderBy, setOrderBy] = useState("created_at");
   const [ascend, setAscend] = useState(false);
 
@@ -19,14 +18,20 @@ const Home = () => {
   };
 
   const handleLike = (updatedSmoothie) => {
-    setSmoothies((prevSmoothies) => {
-      return prevSmoothies.map((sm) => {
-        if (sm.id === updatedSmoothie.id) {
-          return updatedSmoothie; // Update the smoothie with the updated data
-        }
-        return sm;
-      });
-    });
+    if(username !== ""){
+      setSmoothies((prevSmoothies) => {
+        return prevSmoothies.map((sm) => {
+          if (sm.id === updatedSmoothie.id) {
+            return updatedSmoothie; // Update the smoothie with the updated data
+          }
+          return sm;
+        })
+     })
+    }
+    else{
+      
+    }
+    
   };
 
   useEffect(() => {
