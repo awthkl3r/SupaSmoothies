@@ -5,14 +5,23 @@
 }
 
 :root {
-  --primary: #e65538;
+  /* --primary: #e65538;
   --secondary: #90264e;
-  --accent: #c8213d;
+  --accent: #c8213d; */
+
+  --primary: #36393e;
+  
+  --secondary: #7289da;
+
+  --accent: #1e2124;
+  
 }
 
 h1, h2, h3 {
   margin: 0;
 }
+
+
 
 body {
   margin: 0;
@@ -25,6 +34,7 @@ nav {
   background: var(--primary);
   padding: 10px 20px;
   text-align: center;
+  /* box-shadow: 0 0 100px  black inset; */
 }
 
 nav a {
@@ -35,6 +45,7 @@ nav a {
 
 nav h1 {
   color: #fff;
+  margin-bottom: 20px;
 }
 
 .page {
