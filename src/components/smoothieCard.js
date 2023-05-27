@@ -32,7 +32,7 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
     if (!isLiked) {
         if(username == ""){
             navigate("/login")
-            alert("log in")
+            alert("Please login to like a card!")
         }
         else{
 
@@ -61,7 +61,7 @@ const SmoothieCard = ({ smoothie, onDelete, onLike}) => {
     if (isLiked && smoothie.rating) {
         if(username == ""){
             navigate("/login")
-            alert("log in")
+            alert("Please login to like a card!")
         }
         else{
 
