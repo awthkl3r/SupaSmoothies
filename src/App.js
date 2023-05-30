@@ -20,9 +20,6 @@ function App() {
       const session = await supabase.auth.getSession();
       if (session && session.data.session && session.data.session.user) {
         const username_extracted = session.data.session.user.email.split('@')[0];
-        // if(username_extracted == " "){
-          
-        // }
         setUsername(username_extracted);
       }
       else{
