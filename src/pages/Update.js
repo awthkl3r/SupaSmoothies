@@ -103,7 +103,6 @@ const Update = () => {
                   }
                   break;
                 default:
-                  // Handle any other cases if needed
                   break;
               }
           }

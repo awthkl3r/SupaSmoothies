@@ -22,7 +22,7 @@ const Home = () => {
       setSmoothies((prevSmoothies) => {
         return prevSmoothies.map((sm) => {
           if (sm.id === updatedSmoothie.id) {
-            return updatedSmoothie; // Update the smoothie with the updated data
+            return updatedSmoothie
           }
           return sm;
         })
@@ -60,7 +60,6 @@ const Home = () => {
       if (session && session.data.session && session.data.session.user) {
         const username_extracted = session.data.session.user.email.split('@')[0];
         setUsername(username_extracted);
-        // setUsername(username_extracted);
       }
     };
     getSessionData();
