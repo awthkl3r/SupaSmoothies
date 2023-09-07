@@ -42,7 +42,7 @@ const Home = () => {
         .order(orderBy, { ascending: ascend });
 
       if (error) {
-        setFetchError("Could not fetch smoothies");
+        setFetchError("Could not fetch cards, please come back later");
         setSmoothies(null);
         console.log(error);
       }
